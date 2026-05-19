@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact — Bradley Redden</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Georgia, 'Times New Roman', serif;
+            background-color: #f5f5f0;
+            color: #2c2c2c;
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Left sidebar */
+        .sidebar {
+            width: 180px;
+            background-color: #2c3a4a;
+            padding: 50px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            position: fixed;
+            height: 100vh;
+        }
+
+        .sidebar nav {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sidebar nav a {
+            color: #d4cfc8;
+            text-decoration: none;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 0.95em;
+            letter-spacing: 0.05em;
+            padding: 14px 28px;
+            border-left: 3px solid transparent;
+            transition: background-color 0.2s, border-color 0.2s, color 0.2s;
+        }
+
+        .sidebar nav a:hover,
+        .sidebar nav a.active {
+            background-color: #3d5166;
+            border-left-color: #a8c4d8;
+            color: #ffffff;
+        }
+
+        /* Main content */
+        .main {
+            margin-left: 180px;
+            flex: 1;
+            padding: 50px 60px 80px 60px;
+            max-width: 960px;
+        }
+
+        /* Page header */
+        .page-header {
+            border-bottom: 1px solid #c8c4bc;
+            padding-bottom: 20px;
+            margin-bottom: 40px;
+        }
+
+        .page-header h1 {
+            font-size: 2.2em;
+            font-weight: normal;
+            color: #1a2a3a;
+            letter-spacing: 0.02em;
+        }
+
+        /* Contact form card */
+        .contact-card {
+            background-color: #ffffff;
+            border: 1px solid #ddd9d2;
+            border-radius: 4px;
+            padding: 36px 40px;
+            max-width: 580px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+        }
+
+        .contact-card p {
+            font-size: 0.95em;
+            line-height: 1.75;
+            color: #555;
+            margin-bottom: 28px;
+        }
+
+        /* Form elements */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 0.8em;
+            font-weight: bold;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: #2c3a4a;
+            margin-bottom: 6px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        textarea {
+            width: 100%;
+            padding: 10px 14px;
+            font-family: Georgia, 'Times New Roman', serif;
+            font-size: 0.95em;
+            color: #2c2c2c;
+            background-color: #fafaf8;
+            border: 1px solid #c8c4bc;
+            border-radius: 2px;
+            transition: border-color 0.2s, box-shadow 0.2s;
+            outline: none;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        textarea:focus {
+            border-color: #2c3a4a;
+            box-shadow: 0 0 0 2px rgba(44,58,74,0.1);
+        }
+
+        textarea {
+            height: 140px;
+            resize: vertical;
+        }
+
+        /* Email button */
+        .btn-email {
+            display: inline-block;
+            margin-top: 8px;
+            padding: 11px 32px;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 0.85em;
+            font-weight: bold;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: #ffffff;
+            background-color: #2c3a4a;
+            border: none;
+            border-radius: 2px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .btn-email:hover {
+            background-color: #3d5166;
+        }
+
+        /* Success / error messages */
+        .form-notice {
+            display: none;
+            margin-top: 16px;
+            padding: 12px 16px;
+            border-radius: 2px;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 0.88em;
+        }
+
+        .form-notice.success {
+            background-color: #eaf4ec;
+            border: 1px solid #a3d4aa;
+            color: #2a6636;
+        }
+
+        .form-notice.error {
+            background-color: #fdf0ef;
+            border: 1px solid #e8a49e;
+            color: #8c2a24;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Left vertical navigation -->
+    <aside class="sidebar">
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="portfolio.html">Portfolio</a>
+            <a href="resume.html">Resumé</a>
+            <a href="contact.html" class="active">Contact</a>
+        </nav>
+    </aside>
+
+    <!-- Main content -->
+    <main class="main">
+
+        <div class="page-header">
+            <h1>Contact</h1>
+        </div>
+
+        <div class="contact-card">
+            <p>Use the form below to get in touch. I'll get back to you as soon as possible.</p>
+
+            <!--
+                Formspree setup (one-time, free):
+                1. Go to https://formspree.io and sign up with brad.redden@gmail.com
+                2. Create a new form — Formspree gives you an endpoint like:
+                   https://formspree.io/f/abcdefgh
+                3. Replace YOUR_FORM_ID below with that ID (the part after /f/)
+            -->
+            <form id="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" placeholder="Your name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Your Email</label>
+                    <input type="email" id="email" name="_replyto" placeholder="your@email.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" placeholder="Your message…" required></textarea>
+                </div>
+
+                <!-- Hidden field: redirects back to this page after submission -->
+                <input type="hidden" name="_next" value="contact.html">
+                <!-- Honeypot: spam prevention -->
+                <input type="text" name="_gotcha" style="display:none">
+
+                <button type="submit" class="btn-email">Email</button>
+
+                <div class="form-notice success" id="msg-success">
+                    Message sent — thank you! I'll be in touch soon.
+                </div>
+                <div class="form-notice error" id="msg-error">
+                    Something went wrong. Please try again or email directly.
+                </div>
+            </form>
+        </div>
+
+    </main>
+
+    <script>
+        // Show success notice if Formspree redirects back with ?submitted=true
+        if (window.location.search.includes('submitted=true')) {
+            document.getElementById('msg-success').style.display = 'block';
+        }
+    </script>
+
+</body>
+</html>

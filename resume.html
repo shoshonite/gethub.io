@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resumé — Bradley Redden</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Georgia, 'Times New Roman', serif;
+            background-color: #f5f5f0;
+            color: #2c2c2c;
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Left sidebar */
+        .sidebar {
+            width: 180px;
+            background-color: #2c3a4a;
+            padding: 50px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            position: fixed;
+            height: 100vh;
+        }
+
+        .sidebar nav {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sidebar nav a {
+            color: #d4cfc8;
+            text-decoration: none;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 0.95em;
+            letter-spacing: 0.05em;
+            padding: 14px 28px;
+            border-left: 3px solid transparent;
+            transition: background-color 0.2s, border-color 0.2s, color 0.2s;
+        }
+
+        .sidebar nav a:hover,
+        .sidebar nav a.active {
+            background-color: #3d5166;
+            border-left-color: #a8c4d8;
+            color: #ffffff;
+        }
+
+        /* Main content */
+        .main {
+            margin-left: 180px;
+            flex: 1;
+            padding: 50px 60px 80px 60px;
+            max-width: 960px;
+        }
+
+        /* Page header */
+        .page-header {
+            border-bottom: 1px solid #c8c4bc;
+            padding-bottom: 20px;
+            margin-bottom: 10px;
+        }
+
+        .page-header h1 {
+            font-size: 2.2em;
+            font-weight: normal;
+            color: #1a2a3a;
+            letter-spacing: 0.02em;
+        }
+
+        .page-header .email {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 0.9em;
+            color: #666;
+            margin-top: 4px;
+        }
+
+        /* Summary */
+        .summary {
+            margin: 24px 0 36px 0;
+            font-size: 1em;
+            line-height: 1.8;
+            color: #444;
+            max-width: 720px;
+            font-style: italic;
+        }
+
+        /* Sections */
+        .section {
+            margin-bottom: 38px;
+        }
+
+        .section-title {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 0.85em;
+            font-weight: bold;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: #2c3a4a;
+            border-bottom: 1px solid #c8c4bc;
+            padding-bottom: 6px;
+            margin-bottom: 18px;
+        }
+
+        /* Sub-sections within Experience Highlights */
+        .subsection {
+            margin-bottom: 20px;
+        }
+
+        .subsection-title {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 0.95em;
+            font-weight: bold;
+            color: #2c3a4a;
+            margin-bottom: 10px;
+        }
+
+        /* Bullet lists */
+        ul.star-list {
+            list-style: none;
+            padding-left: 10px;
+        }
+
+        ul.star-list li {
+            position: relative;
+            padding-left: 22px;
+            margin-bottom: 9px;
+            font-size: 0.95em;
+            line-height: 1.7;
+            color: #444;
+        }
+
+        ul.star-list li::before {
+            content: "★";
+            position: absolute;
+            left: 0;
+            color: #2c3a4a;
+            font-size: 0.8em;
+            top: 3px;
+        }
+
+        /* Work experience entries */
+        .job {
+            margin-bottom: 18px;
+        }
+
+        .job-title {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 0.95em;
+            font-weight: bold;
+            color: #1a2a3a;
+        }
+
+        .job-org {
+            font-weight: normal;
+            color: #2c3a4a;
+        }
+
+        .job-dates {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 0.85em;
+            color: #666;
+            margin-top: 2px;
+        }
+
+        .job-location {
+            font-size: 0.9em;
+            font-style: italic;
+            color: #666;
+            margin-top: 2px;
+        }
+
+        /* Education entry */
+        .edu-degree {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 0.95em;
+            font-weight: bold;
+            color: #1a2a3a;
+        }
+
+        .edu-school {
+            font-size: 0.9em;
+            font-style: italic;
+            color: #666;
+            margin-top: 2px;
+        }
+
+        /* Short course */
+        .course {
+            margin-bottom: 10px;
+        }
+
+        .course-title {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 0.95em;
+            font-weight: bold;
+            color: #1a2a3a;
+        }
+
+        .course-detail {
+            font-size: 0.88em;
+            color: #666;
+            margin-top: 3px;
+            line-height: 1.6;
+        }
+
+        /* Appointments */
+        .appointment {
+            margin-bottom: 12px;
+        }
+
+        .appointment-title {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 0.95em;
+            font-weight: bold;
+            color: #1a2a3a;
+        }
+
+        .appointment-detail {
+            font-size: 0.88em;
+            color: #666;
+            margin-top: 2px;
+            padding-left: 16px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Left vertical navigation -->
+    <aside class="sidebar">
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="portfolio.html">Portfolio</a>
+            <a href="resume.html" class="active">Resumé</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </aside>
+
+    <!-- Main content -->
+    <main class="main">
+
+        <div class="page-header">
+            <h1>Brad Redden, BSc</h1>
+            <div class="email">brad.redden@gmail.com</div>
+        </div>
+
+        <p class="summary">
+            Brad Redden is an enthusiastic, solutions-oriented leader with a proven track record of unsurpassed
+            commitment and dedication to producing results. Brad delivers steadfast, clear thinking and
+            problem-solving and can consistently provide compelling vision in the most complex and fast-paced environments.
+        </p>
+
+        <!-- Experience Highlights -->
+        <div class="section">
+            <div class="section-title">Experience Highlights</div>
+
+            <div class="subsection">
+                <div class="subsection-title">Stakeholder Engagement, Facilitation, and Communication</div>
+                <ul class="star-list">
+                    <li>Deep engagement with staff and council to bring forward the best solutions. Active engagement with staff to identify the full scope of facts and possibilities. Added value and depth to the reports brought forward to the council. Worked to be seen as a resource by fellow councilors.</li>
+                    <li>Long-standing engagement with Arlington Waterkeepers and Save Our Old Forests; citizen science initiatives in Annapolis County.</li>
+                    <li>Integrated stakeholder feedback from public consultation meetings, public comments, and one-on-one engagement into amendments for the Annapolis County Land Use By-Law and Planning Strategy.</li>
+                    <li>Strategic and technical consulting for several grass-roots citizen-run, political, and environmental stewardship organizations, providing technical information on the environmental implications of the mineral extraction industry, and strategic political advice.</li>
+                </ul>
+            </div>
+
+            <div class="subsection">
+                <div class="subsection-title">Project Management, Research, and Organizational Skills</div>
+                <ul class="star-list">
+                    <li>Managed year-end mineral assessment report writing while supporting planning work for the next exploration season, and technical documentation to support financing and venture capital recruitment by providing data analysis and visualization.</li>
+                    <li>Experience organizing mineral exploration campaigns, extensive home renovations, and scientific conferences.</li>
+                    <li>Background research, data compilation, base, and thematic mapping for developing new exploration targets in various northern Ontario greenstone belts.</li>
+                </ul>
+            </div>
+
+            <div class="subsection">
+                <div class="subsection-title">Land-Use Planning &amp; Municipal Government</div>
+                <ul class="star-list">
+                    <li>Participated in numerous public engagement sessions as the county-wide plan was developed. Worked very closely with planning staff on amendments to Annapolis County Land-use planning documents.</li>
+                    <li>4 years on municipal council, 2 years as Deputy Warden.</li>
+                    <li>4 years on the Annapolis County Planning Advisory Committee; appointed for a further 2 years.</li>
+                    <li>Appointed to a working group advising the province on Action 8 commitments to Municipalities in the Provincial Plan for Coastal Protection, to develop draft recommendations for land-use by-laws for municipalities to adopt for coastal protection.</li>
+                </ul>
+            </div>
+
+            <div class="subsection">
+                <div class="subsection-title">Sustainable Development Practices</div>
+                <ul class="star-list">
+                    <li>3 years in the mineral exploration industry; sustainability and project legacy are constant conversations and are essential to mine life planning and marketing.</li>
+                    <li>Board-level oversight of Kings Transit's initiation of transition to electrification.</li>
+                </ul>
+            </div>
+
+            <div class="subsection">
+                <div class="subsection-title">Team Efforts and Collaborations</div>
+                <ul class="star-list">
+                    <li>Member of a highly motivated team that completed an aggressive 18-month drill program in 10 months, improving data quality and with a better-than-industry-average safety record. Completing this project in 10 months made it the largest drill program in the world that year.</li>
+                    <li>Rebuilt many inter-municipal relationships in the Annapolis Valley and guided the Municipality of Annapolis County back into Valley Waste membership.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Work Experience -->
+        <div class="section">
+            <div class="section-title">Work Experience</div>
+
+            <div class="job">
+                <div class="job-title">County Councillor / Deputy Warden — <span class="job-org">Municipality of the County of Annapolis</span></div>
+                <div class="job-dates">Nov 2020 – Oct 2024</div>
+                <div class="job-location">Annapolis County, NS &nbsp;·&nbsp; Municipal Government</div>
+            </div>
+
+            <div class="job">
+                <div class="job-title">Carpenter — <span class="job-org">Phil Rearden Contracting</span></div>
+                <div class="job-dates">2017 – Nov 2020</div>
+                <div class="job-location">Halifax, NS &nbsp;·&nbsp; Large Renovations and New Builds</div>
+            </div>
+
+            <div class="job">
+                <div class="job-title">Geologist — <span class="job-org">Various</span></div>
+                <div class="job-dates">2008, 2011 – 2012</div>
+                <div class="job-location">Labrador, Northern Ontario, Blackwater Project, BC</div>
+            </div>
+        </div>
+
+        <!-- Education -->
+        <div class="section">
+            <div class="section-title">Education</div>
+            <div class="edu-degree">Bachelor of Science — Geology Major (2007)</div>
+            <div class="edu-school">Saint Mary's University, Halifax, Nova Scotia</div>
+        </div>
+
+        <!-- Short Courses -->
+        <div class="section">
+            <div class="section-title">Short Courses</div>
+            <div class="course">
+                <div class="course-title">Mining the Connections: A Forum on Local and Global Mining Human Rights, Environmental, Community, and Economic Impacts (2008)</div>
+                <div class="course-detail">
+                    Presented by: The Tatamagouche Centre and Atlantic Regional Solitary Network.<br>
+                    Instructors: Joan Kuyek, Janet Eaton, Jesus Brochero, Jim Harding.
+                </div>
+            </div>
+        </div>
+
+        <!-- Organization Appointments -->
+        <div class="section">
+            <div class="section-title">Organization Appointments &amp; Elected Positions</div>
+
+            <div class="appointment">
+                <div class="appointment-title">Elected Councillor — Municipality of the County of Annapolis</div>
+                <div class="appointment-detail">Elected Oct 17, 2020 – Oct 30, 2024</div>
+                <div class="appointment-detail"><strong>Deputy Warden</strong> (Elected Nov 2022 – Oct 2024)</div>
+            </div>
+
+            <div class="appointment">
+                <div class="appointment-title">NSFM Board of Directors — Valley Representative</div>
+                <div class="appointment-detail">Elected 2024</div>
+            </div>
+
+            <div class="appointment">
+                <div class="appointment-title">Annapolis County Planning Advisory Committee</div>
+                <div class="appointment-detail">Appointed Nov 2020 – Oct 2026</div>
+            </div>
+
+            <div class="appointment">
+                <div class="appointment-title">Annapolis County Inter-Municipal Working Group on Inter-Municipal Co-operation</div>
+                <div class="appointment-detail">Elected Aug 2023 – Oct 2024</div>
+            </div>
+
+            <div class="appointment">
+                <div class="appointment-title">Interim Inter-Municipal Service Agreement Board of Directors</div>
+                <div class="appointment-detail">Appointed Nov 2022 – Oct 2024</div>
+            </div>
+
+            <div class="appointment">
+                <div class="appointment-title">Working Group to Advise NS Dept. of Environment on Action 8 RFP — Provincial Plan for Coastal Protection</div>
+                <div class="appointment-detail">Appointed</div>
+            </div>
+        </div>
+
+    </main>
+
+</body>
+</html>
